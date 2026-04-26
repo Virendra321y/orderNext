@@ -270,6 +270,98 @@ com.example
 5. GET  /orders/{id}
 ```
 
+
+## 📦 Combined Payload (Conceptual View)
+
+This JSON represents a **complete business view of customer + address + products + order** in a single structure.
+
+> ⚠️ Note: This is **NOT used directly in APIs**.
+> Actual implementation uses **separate APIs** (Customer, Address, Product, Order).
+
+---
+
+### 🔹 Full Reference Payload
+
+```json
+{
+  "customer": {
+    "customerId": "CUST1001",
+    "name": "Virendra Yadav",
+    "email": "virendra.yadav@example.com",
+    "phone": "+91-9876543210",
+    "address": {
+      "street": "221B Baker Street",
+      "city": "Mumbai",
+      "state": "Maharashtra",
+      "zipCode": "400001"
+    },
+    "products": [
+      {
+        "productId": "PROD101",
+        "productName": "Wireless Mouse",
+        "category": "Electronics",
+        "price": 899.0,
+        "quantity": 1,
+        "purchaseDate": "2025-10-25"
+      },
+      {
+        "productId": "PROD102",
+        "productName": "Mechanical Keyboard",
+        "category": "Electronics",
+        "price": 2499.0,
+        "quantity": 1,
+        "purchaseDate": "2025-10-26"
+      },
+      {
+        "productId": "PROD103",
+        "productName": "Laptop Stand",
+        "category": "Accessories",
+        "price": 1299.0,
+        "quantity": 2,
+        "purchaseDate": "2025-10-27"
+      }
+    ]
+  }
+}
+```
+
+---
+
+## 🔍 How This Maps to Actual APIs
+
+| JSON Section    | API              |
+| --------------- | ---------------- |
+| customer        | `/api/customers` |
+| address         | `/api/addresses` |
+| products        | `/api/products`  |
+| order (derived) | `/api/orders`    |
+
+---
+
+## 🧠 Key Understanding
+
+* This structure is useful for:
+
+  * Documentation
+  * UI design
+  * Understanding full flow
+
+* But backend follows:
+
+  * **Separation of concerns**
+  * **Multiple APIs**
+  * **Normalized database design**
+
+---
+
+## 💡 Important Concept
+
+> ❗ “Frontend may think in one JSON, backend works in multiple services.”
+
+---
+
+
+
 ---
 
 ## ⚠️ Known Limitations
